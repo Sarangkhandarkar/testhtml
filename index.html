@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greeting Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 100px;
+  }
+  input {
+    padding: 10px;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+  <h1>Welcome to the Greeting Page!</h1>
+  <p>Please enter your name:</p>
+  <input type="text" id="nameInput" placeholder="Your name">
+  <button id="submitButton">Enter</button>
+  <p id="greetingMessage"></p>
+
+  <script>
+    const nameInput = document.getElementById('nameInput');
+    const submitButton = document.getElementById('submitButton');
+    const greetingMessage = document.getElementById('greetingMessage');
+
+    submitButton.addEventListener('click', greetUser);
+    nameInput.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        greetUser();
+      }
+    });
+
+    function greetUser() {
+      const name = nameInput.value;
+      if (name.trim() === '') {
+        greetingMessage.textContent = 'Please enter a valid name.';
+      } else {
+        greetingMessage.textContent = `Hello, ${name}! Welcome to our page.`;
+        nameInput.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
